@@ -5,11 +5,10 @@ name: CI
 jobs:
   check:
     name: Check
-    runs-on: ${{matrix.os}}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
+        os: [ubuntu-latest]
         rust:
           - stable
           - beta
@@ -34,11 +33,10 @@ jobs:
 
   test:
     name: Test Suite
-    runs-on: ${{matrix.os}}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
+        os: [ubuntu-latest]
         rust:
           - stable
           - beta
@@ -65,11 +63,10 @@ jobs:
 
   test-net-private:
     name: Test Suite (network-enabled tests)
-    runs-on: ${{matrix.os}}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
+        os: [ubuntu-latest]
         rust:
           - stable
           - beta
@@ -96,11 +93,10 @@ jobs:
 
   lints:
     name: Lints
-    runs-on: ${{matrix.os}}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
+        os: [ubuntu-latest]
         rust:
           - stable
           - beta
