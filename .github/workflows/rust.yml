@@ -4,7 +4,8 @@ name: CI
 
 jobs:
   check:
-    name: Check
+    name: Check ${{matrix.rust || '(default)'}}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         rust:
@@ -14,7 +15,6 @@ jobs:
         include:
           - rust: nightly
             experimental: true
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -30,7 +30,8 @@ jobs:
         run: cargo check
 
   test:
-    name: Test Suite
+    name: Test Suite ${{matrix.rust || '(default)'}}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         rust:
@@ -40,7 +41,6 @@ jobs:
         include:
           - rust: nightly
             experimental: true
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -59,7 +59,8 @@ jobs:
         run: cargo test --features test-mock
 
   test-net-private:
-    name: Test Suite (network-enabled tests)
+    name: Test Suite (network-enabled tests) ${{matrix.rust || '(default)'}}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         rust:
@@ -69,7 +70,6 @@ jobs:
         include:
           - rust: nightly
             experimental: true
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -88,7 +88,8 @@ jobs:
           DKREG_QUAY_PASSWD: ${{ secrets.DKREG_QUAY_PASSWD }}
 
   lints:
-    name: Lints
+    name: Lints ${{matrix.rust || '(default)'}}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         rust:
@@ -98,7 +99,6 @@ jobs:
         include:
           - rust: nightly
             experimental: true
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
