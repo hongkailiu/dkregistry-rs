@@ -7,7 +7,6 @@ jobs:
     name: Check
     strategy:
       matrix:
-        os: [ubuntu-latest]
         rust:
           - stable
           - beta
@@ -15,7 +14,7 @@ jobs:
         include:
           - rust: nightly
             experimental: true
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
