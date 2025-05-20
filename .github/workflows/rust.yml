@@ -5,7 +5,6 @@ name: CI
 jobs:
   check:
     name: Check
-    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -16,7 +15,7 @@ jobs:
         include:
           - rust: nightly
             experimental: true
-
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -33,7 +32,6 @@ jobs:
 
   test:
     name: Test Suite
-    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -44,6 +42,7 @@ jobs:
         include:
           - rust: nightly
             experimental: true
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -63,7 +62,6 @@ jobs:
 
   test-net-private:
     name: Test Suite (network-enabled tests)
-    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -74,6 +72,7 @@ jobs:
         include:
           - rust: nightly
             experimental: true
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -93,7 +92,6 @@ jobs:
 
   lints:
     name: Lints
-    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -104,6 +102,7 @@ jobs:
         include:
           - rust: nightly
             experimental: true
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
