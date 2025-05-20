@@ -4,7 +4,7 @@ name: CI
 
 jobs:
   check:
-    name: Check ${{matrix.rust || '(default)'}}
+    name: Check
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -30,7 +30,7 @@ jobs:
         run: cargo check
 
   test:
-    name: Test Suite ${{matrix.rust || '(default)'}}
+    name: Test Suite
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -59,7 +59,7 @@ jobs:
         run: cargo test --features test-mock
 
   test-net-private:
-    name: Test Suite (network-enabled tests) ${{matrix.rust || '(default)'}}
+    name: Test Suite (network-enabled tests)
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -88,7 +88,7 @@ jobs:
           DKREG_QUAY_PASSWD: ${{ secrets.DKREG_QUAY_PASSWD }}
 
   lints:
-    name: Lints ${{matrix.rust || '(default)'}}
+    name: Lints
     runs-on: ubuntu-latest
     strategy:
       matrix:
